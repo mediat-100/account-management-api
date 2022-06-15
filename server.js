@@ -1,20 +1,7 @@
 const http = require('http');
-const express = require('express');
 const dotenv = require('dotenv').config({ path: './.env' });
 const { database } = require('./db').database();
-
-const app = express();
-
-const userRouter = require('./routes/userRoute');
-const accountRouter = require('./routes/accountRoute');
-const transactionRouter = require('./routes/transactionRoute');
-
-
-//middlewares
-app.use(express.json()); //body-parser
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/accounts', accountRouter);
-app.use('/api/v1/transactions', transactionRouter);
+const app = require('./app');
 
 const server = http.createServer(app);
 
